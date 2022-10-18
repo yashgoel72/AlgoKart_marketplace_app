@@ -16,7 +16,7 @@ import clearProgram from "!!raw-loader!../contracts/marketplace_clear.teal";
 import {base64ToUTF8String, utf8ToBase64String} from "./conversions";
 
 class Product {
-    constructor(name, image, description, price, sold, appId, owner) {
+    constructor(name, image, description, price, sold, appId, owner , points) {
         this.name = name;
         this.image = image;
         this.description = description;
@@ -24,6 +24,7 @@ class Product {
         this.sold = sold;
         this.appId = appId;
         this.owner = owner;
+        this.points = points;
     }
 }
 
@@ -53,8 +54,9 @@ export const createProductAction = async (senderAddress, product) => {
     let image = new TextEncoder().encode(product.image);
     let description = new TextEncoder().encode(product.description);
     let price = algosdk.encodeUint64(product.price);
+    let points = algosdk.encodeUint64(product.points);
 
-    let appArgs = [name, image, description, price]
+    let appArgs = [name, image, description, price , points]
 
     // Create ApplicationCreateTxn
     let txn = algosdk.makeApplicationCreateTxnFromObject({
@@ -105,15 +107,17 @@ export const buyProductAction = async (senderAddress, product, count) => {
     // Build required app args as Uint8Array
     let buyArg = new TextEncoder().encode("buy")
     let countArg = algosdk.encodeUint64(count);
-    let appArgs = [buyArg, countArg]
+    let appArgs = [buyArg, countArg , new TextEncoder().encode(senderAddress) , new TextEncoder().encode(product.owner) , new TextEncoder().encode(product.points.toString())]
 
     // Create ApplicationCallTxn
     let appCallTxn = algosdk.makeApplicationCallTxnFromObject({
         from: senderAddress,
+        to: product.owner,
         appIndex: product.appId,
         onComplete: algosdk.OnApplicationComplete.NoOpOC,
         suggestedParams: params,
-        appArgs: appArgs
+        appArgs: appArgs,
+        note : new TextEncoder().encode("points-exchanged:uv2")
     })
 
     // Create PaymentTxn
@@ -190,6 +194,7 @@ export const getProductsAction = async () => {
         .do();
     let products = []
     for (const transaction of transactionInfo.transactions) {
+        // console.log(transaction)
         let appId = transaction["created-application-index"]
         if (appId) {
             // Step 2: Get each application by application id
@@ -218,6 +223,7 @@ const getApplication = async (appId) => {
         let description = ""
         let price = 0
         let sold = 0
+        let points = 0
 
         const getField = (fieldName, globalState) => {
             return globalState.find(state => {
@@ -246,8 +252,11 @@ const getApplication = async (appId) => {
         if (getField("SOLD", globalState) !== undefined) {
             sold = getField("SOLD", globalState).value.uint
         }
+        if (getField("POINTS", globalState) !== undefined) {
+            points = getField("POINTS", globalState).value.uint
+        }
 
-        return new Product(name, image, description, price, sold, appId, owner)
+        return new Product(name, image, description, price, sold, appId, owner , points)
     } catch (err) {
         return null;
     }

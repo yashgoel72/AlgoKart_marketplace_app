@@ -20,6 +20,9 @@ const Product = ({address, product, buyProduct, deleteProduct}) => {
                         <Badge bg="secondary" className="ms-auto">
                             {sold} Sold
                         </Badge>
+                        <Badge bg="secondary" className="ms-auto">
+                            {points} Points
+                        </Badge>
                     </Stack>
                 </Card.Header>
                 <div className="ratio ratio-4x3">

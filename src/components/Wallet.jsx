@@ -3,6 +3,7 @@ import {Dropdown, Spinner, Stack} from 'react-bootstrap';
 import {microAlgosToString, truncateAddress} from '../utils/conversions';
 import Identicon from './utils/Identicon'
 import PropTypes from "prop-types";
+import {Badge} from "react-bootstrap";
 
 const Wallet = ({address, name, amount, points , symbol, disconnect}) => {
     if (!address) {
@@ -24,9 +25,15 @@ const Wallet = ({address, name, amount, points , symbol, disconnect}) => {
 
                     <Identicon address={address} size={28} className="ms-2 me-1"/>
                 </Dropdown.Toggle>
-                <div className="d-flex align-items-center border rounded-pill py-1">
-                    ABCD
-                </div>
+                <Badge bg="secondary" className="ms-auto">
+                            {points} Total Wallet Points
+                        </Badge>
+                {/* <div variant="light" align="end" id="dropdown-basic" className="d-flex align-items-center border rounded-pill py-1">
+                <>
+                            {points}
+                            <span className="ms-1"> {"TOTAL POINTS"}</span>
+                        </>
+                </div> */}
 
                 <Dropdown.Menu className="shadow-lg border-0">
                     <Dropdown.Item href={`https://testnet.algoexplorer.io/address/${address}`}
@@ -56,6 +63,7 @@ Wallet.propTypes = {
     address: PropTypes.string,
     name: PropTypes.string,
     amount: PropTypes.number,
+    points: PropTypes.number,
     symbol: PropTypes.string,
     disconnect: PropTypes.func
 };

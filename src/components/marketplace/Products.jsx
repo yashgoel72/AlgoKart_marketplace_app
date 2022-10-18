@@ -10,7 +10,7 @@ import {Row} from "react-bootstrap";
 //...
 
 //...
-const Products = ({address, fetchBalance}) => {
+const Products = ({address, fetchBalance , fetchPoints}) => {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(false);
     
@@ -42,6 +42,7 @@ const Products = ({address, fetchBalance}) => {
 	            toast(<NotificationSuccess text="Product added successfully."/>);
 	            getProducts();
 	            fetchBalance(address);
+                fetchPoints(address);
 	        })
 	        .catch(error => {
 	            console.log(error);
@@ -59,6 +60,7 @@ const buyProduct = async (product, count) => {
             toast(<NotificationSuccess text="Product bought successfully"/>);
             getProducts();
             fetchBalance(address);
+            fetchPoints(address);
         })
         .catch(error => {
             console.log(error)
@@ -76,6 +78,7 @@ const deleteProduct = async (product) => {
             toast(<NotificationSuccess text="Product deleted successfully"/>);
             getProducts();
             fetchBalance(address);
+            fetchPoints(address);
         })
         .catch(error => {
             console.log(error)
@@ -114,7 +117,8 @@ return (
 
 Products.propTypes = {
 address: PropTypes.string.isRequired,
-fetchBalance: PropTypes.func.isRequired
+fetchBalance: PropTypes.func.isRequired,
+fetchPoints: PropTypes.func.isRequired
 };
 
 export default Products;
