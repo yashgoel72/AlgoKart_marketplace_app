@@ -19,7 +19,7 @@ export const myAlgoConnect = new MyAlgoConnect();
 export const minRound = 21540981;
 export const ALGORAND_DECIMALS = 6;
 // https://github.com/algorandfoundation/ARCs/blob/main/ARCs/arc-0002.md
-export const marketplaceNote = "tutorial-marketplace:uv2"
+export const marketplaceNote = "tutorial-marketplace:uv3"
 
 // Maximum local storage allocation, immutable
 export const numLocalInts = 0;

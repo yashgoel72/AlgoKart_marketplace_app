@@ -10,7 +10,7 @@ import {Row} from "react-bootstrap";
 //...
 
 //...
-const Products = ({address, fetchBalance , fetchPoints}) => {
+const Products = ({address, fetchBalance , fetchPoints , user_points}) => {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(false);
     
@@ -53,9 +53,9 @@ const Products = ({address, fetchBalance , fetchPoints}) => {
 //...
 
 //...
-const buyProduct = async (product, count) => {
+const buyProduct = async (product, count , use_points) => {
     setLoading(true);
-    buyProductAction(address, product, count)
+    buyProductAction(address, product, count , use_points)
         .then(() => {
             toast(<NotificationSuccess text="Product bought successfully"/>);
             getProducts();
@@ -106,6 +106,7 @@ return (
                         product={product}
                         buyProduct={buyProduct}
                         deleteProduct={deleteProduct}
+                        user_points={user_points}
                         key={index}
                     />
                 ))}

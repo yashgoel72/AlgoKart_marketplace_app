@@ -5,7 +5,7 @@ import Identicon from './utils/Identicon'
 import PropTypes from "prop-types";
 import {Badge} from "react-bootstrap";
 
-const Wallet = ({address, name, amount, points , symbol, disconnect}) => {
+const Wallet = ({address, name, amount, points_given , points_received , symbol, disconnect}) => {
     if (!address) {
         return null;
     }
@@ -25,9 +25,15 @@ const Wallet = ({address, name, amount, points , symbol, disconnect}) => {
 
                     <Identicon address={address} size={28} className="ms-2 me-1"/>
                 </Dropdown.Toggle>
-                <Badge bg="secondary" className="ms-auto">
+                {/* <Badge bg="secondary" className="ms-auto">
                             {points} Total Wallet Points
-                        </Badge>
+                        </Badge> */}
+                <Badge bg="secondary" className="ms-auto">
+                    {points_received} Wallet Points Received
+                </Badge>
+                <Badge bg="secondary" className="ms-auto">
+                    {points_given} Wallet Points Given
+                </Badge>
                 {/* <div variant="light" align="end" id="dropdown-basic" className="d-flex align-items-center border rounded-pill py-1">
                 <>
                             {points}
@@ -63,7 +69,8 @@ Wallet.propTypes = {
     address: PropTypes.string,
     name: PropTypes.string,
     amount: PropTypes.number,
-    points: PropTypes.number,
+    points_given: PropTypes.number,
+    points_received: PropTypes.number,
     symbol: PropTypes.string,
     disconnect: PropTypes.func
 };

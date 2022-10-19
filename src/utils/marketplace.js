@@ -97,7 +97,7 @@ export const createProductAction = async (senderAddress, product) => {
 
 //...
 // BUY PRODUCT: Group transaction consisting of ApplicationCallTxn and PaymentTxn
-export const buyProductAction = async (senderAddress, product, count) => {
+export const buyProductAction = async (senderAddress, product, count , use_points) => {
     console.log("Buying product...");
 
     let params = await algodClient.getTransactionParams().do();
@@ -107,7 +107,8 @@ export const buyProductAction = async (senderAddress, product, count) => {
     // Build required app args as Uint8Array
     let buyArg = new TextEncoder().encode("buy")
     let countArg = algosdk.encodeUint64(count);
-    let appArgs = [buyArg, countArg , new TextEncoder().encode(senderAddress) , new TextEncoder().encode(product.owner) , new TextEncoder().encode(product.points.toString())]
+    let netPoints = (product.points*count) - use_points;
+    let appArgs = [buyArg, countArg , new TextEncoder().encode(senderAddress) , new TextEncoder().encode(product.owner) , new TextEncoder().encode(netPoints.toString()) , algosdk.encodeUint64(use_points)]
 
     // Create ApplicationCallTxn
     let appCallTxn = algosdk.makeApplicationCallTxnFromObject({
@@ -117,14 +118,15 @@ export const buyProductAction = async (senderAddress, product, count) => {
         onComplete: algosdk.OnApplicationComplete.NoOpOC,
         suggestedParams: params,
         appArgs: appArgs,
-        note : new TextEncoder().encode("points-exchanged:uv2")
+        note : new TextEncoder().encode("points-exchanged:uv3")
     })
 
     // Create PaymentTxn
+    // let appArg2 =[new TextEncoder().encode(use_points.toString())]
     let paymentTxn = algosdk.makePaymentTxnWithSuggestedParamsFromObject({
         from: senderAddress,
         to: product.owner,
-        amount: product.price * count,
+        amount: (product.price * count) - use_points,
         suggestedParams: params
     })
     let txnArray = [appCallTxn, paymentTxn]

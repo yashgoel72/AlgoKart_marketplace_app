@@ -100,7 +100,7 @@ return (
                             type="text"
                             placeholder="Points"
                             onChange={(e) => {
-                                setPoints(stringToMicroAlgos(e.target.value));
+                                setPoints(Number(e.target.value));
                             }}
                         />
                     </FloatingLabel>

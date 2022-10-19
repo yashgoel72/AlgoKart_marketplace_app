@@ -24,6 +24,9 @@ global CreatorAddress
 ==
 &&
 gtxn 1 Amount
+txna ApplicationArgs 5
+btoi
++
 byte "PRICE"
 app_global_get
 txna ApplicationArgs 1
@@ -60,7 +63,7 @@ int 5
 ==
 assert
 txn Note
-byte "tutorial-marketplace:uv2"
+byte "tutorial-marketplace:uv3"
 ==
 assert
 txna ApplicationArgs 3

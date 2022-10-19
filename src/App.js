@@ -16,9 +16,9 @@ const App = function AppWrapper() {
   const [address, setAddress] = useState(null);
   const [name, setName] = useState(null);
   const [balance, setBalance] = useState(0);
-  const [points, setPoints] = useState(0);
-  //const [points_given, setPointsGiven] = useState(0);
-  //const [points_received, setPointsReceived] = useState(0);
+  //const [points, setPoints] = useState(0);
+  const [points_given, setPointsGiven] = useState(0);
+  const [points_received, setPointsReceived] = useState(0);
 
   const fetchBalance = async (accountAddress) => {
       indexerClient.lookupAccountByID(accountAddress).do()
@@ -32,20 +32,28 @@ const App = function AppWrapper() {
           });
   };
   const fetchPoints = async (accountAddress) => {
-    let note = new TextEncoder().encode("points-exchanged:uv2");
+    let note = new TextEncoder().encode("points-exchanged:uv3");
     let encodedNote = Buffer.from(note).toString("base64");
     let transactionInfo = await indexerClient.searchForTransactions()
         .address(accountAddress)
         .notePrefix(encodedNote)
         .do();
         console.log(transactionInfo);
-    let points = 0;
+    let points_given = 0;
+    let points_received = 0;
     for (const transaction of transactionInfo.transactions) {
         // console.log(transaction)
        // points = algosdk.decodeUint64(transaction["application-transaction"]["application-args"][4] , "mixed");
-       points += Number(Buffer.from(transaction["application-transaction"]["application-args"][4], "base64").toString());
+       let points_received_address = Buffer.from(transaction["application-transaction"]["application-args"][2], "base64").toString();
+       let points_given_address = Buffer.from(transaction["application-transaction"]["application-args"][3], "base64").toString();
+       if(accountAddress === points_received_address)
+       points_received += Number(Buffer.from(transaction["application-transaction"]["application-args"][4], "base64").toString());
+       if(accountAddress === points_given_address)
+       points_given += Number(Buffer.from(transaction["application-transaction"]["application-args"][4], "base64").toString());
+       //points += Number(Buffer.from(transaction["application-transaction"]["application-args"][4], "base64").toString());
     }
-    setPoints(points);
+    setPointsGiven(points_given);
+    setPointsReceived(points_received);
 };
 
   const connectWallet = async () => {
@@ -82,14 +90,16 @@ return (
                           address={address}
                           name={name}
                           amount={balance}
-                          points={Number(points)}
+                          //points={Number(points)}
+                          points_given={points_given}
+                          points_received={points_received}
                           disconnect={disconnect}
                           symbol={"ALGO"}
                       />
                   </Nav.Item>
               </Nav>
               <main>
-                  <Products address={address} fetchBalance={fetchBalance} fetchPoints={fetchPoints}/>
+                  <Products address={address} fetchBalance={fetchBalance} fetchPoints={fetchPoints} user_points={points_received}/>
               </main>
           </Container>
       ) : (

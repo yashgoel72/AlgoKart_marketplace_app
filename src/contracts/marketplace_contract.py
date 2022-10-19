@@ -28,12 +28,13 @@ class Product:
 
     def buy(self):
         count = Txn.application_args[1]
+        use_points = Txn.application_args[5]
         valid_number_of_transactions = Global.group_size() == Int(2)
 
         valid_payment_to_seller = And(
             Gtxn[1].type_enum() == TxnType.Payment,
             Gtxn[1].receiver() == Global.creator_address(),
-            Gtxn[1].amount() == App.globalGet(self.Variables.price) * Btoi(count),
+            Gtxn[1].amount() + Btoi(use_points) == App.globalGet(self.Variables.price) * Btoi(count),
             Gtxn[1].sender() == Gtxn[0].sender(),
         )
 

@@ -4,11 +4,12 @@ import {Badge, Button, Card, Col, FloatingLabel, Form, Stack} from "react-bootst
 import {microAlgosToString, truncateAddress} from "../../utils/conversions";
 import Identicon from "../utils/Identicon";
 
-const Product = ({address, product, buyProduct, deleteProduct}) => {
+const Product = ({address, product, buyProduct, deleteProduct, user_points}) => {
     const {name, image, description, price, sold, appId, owner , points} =
         product;
 
     const [count, setCount] = useState(1)
+    const [use_points, setUsePoints] = useState(0)
 
     return (
         <Col key={appId}>
@@ -21,7 +22,7 @@ const Product = ({address, product, buyProduct, deleteProduct}) => {
                             {sold} Sold
                         </Badge>
                         <Badge bg="secondary" className="ms-auto">
-                            {points} Points
+                            {points} Points/item
                         </Badge>
                     </Stack>
                 </Card.Header>
@@ -46,13 +47,23 @@ const Product = ({address, product, buyProduct, deleteProduct}) => {
                                     setCount(Number(e.target.value));
                                 }}
                             />
+                              <Form.Control
+                                type="number"
+                                value={use_points}
+                                min="1"
+                                //step="1000"
+                                max = {Math.min(user_points ,price)}
+                                onChange={(e) => {
+                                    setUsePoints(Number(e.target.value));
+                                }}
+                            />
                         </FloatingLabel>
                         <Button
                             variant="outline-dark"
-                            onClick={() => buyProduct(product, count)}
+                            onClick={() => buyProduct(product, count , use_points)}
                             className="w-75 py-3"
                         >
-                            Buy for {microAlgosToString(price) * count} ALGO
+                            Buy for {(microAlgosToString((price * count) - use_points))} ALGO
                         </Button>
                         {product.owner === address &&
                             <Button
