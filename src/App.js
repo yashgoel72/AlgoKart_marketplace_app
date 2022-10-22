@@ -6,13 +6,25 @@ import {Container, Nav} from "react-bootstrap";
 import Products from "./components/marketplace/Products";
 import {Notification} from "./components/utils/Notifications";
 import {indexerClient, myAlgoConnect} from "./utils/constants";
-import coverImg from "./assets/img/sandwich.jpg"
+import coverImg from "./assets/img/shoppingCart.png"
 import algosdk from "algosdk";
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import Menu from '@mui/material/Menu';
+import Avatar from '@mui/material/Avatar';
+import Button from '@mui/material/Button';
+import Tooltip from '@mui/material/Tooltip';
+import MenuItem from '@mui/material/MenuItem';
+import Transactions from "./components/marketplace/TransactionsPage.jsx";
+import {Link, Route, Routes} from "react-router-dom"
 //..
 
 //..
 const App = function AppWrapper() {
-
+  
   const [address, setAddress] = useState(null);
   const [name, setName] = useState(null);
   const [balance, setBalance] = useState(0);
@@ -83,8 +95,70 @@ return (
   <>
       <Notification />
       {address ? (
-          <Container fluid="md">
-              <Nav className="justify-content-end pt-3 pb-5">
+          <Container fluid="md" style = {{width : "100%",maxWidth : "100%" }}>
+                <AppBar position="static" style = {{marginBottom: "5rem"}}>
+                    <Toolbar disableGutters>
+                    <Typography
+            variant="h6"
+            noWrap
+            component="a"
+            href="/"
+            sx={{
+              mr: 2,
+              display: { xs: 'none', md: 'flex' },
+              fontFamily: 'monospace',
+              fontWeight: 700,
+              letterSpacing: '.3rem',
+              color: 'inherit',
+              textDecoration: 'none',
+              paddingLeft: "2rem"
+            }}
+          >
+            MARKETPLACE
+          </Typography>
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } , paddingLeft: "5rem" }}>
+              <Link to = "/" style={{ textDecoration: 'none' }}>
+                 <Typography
+            variant="h6"
+            noWrap
+            component="a"
+            href="/"
+            sx={{
+              mr: 2,
+              display: { xs: 'none', md: 'flex' },
+              fontFamily: 'monospace',
+              fontWeight: 700,
+              letterSpacing: '.3rem',
+              color: 'white',
+              textDecoration: 'none',
+              paddingLeft: "2rem"
+            }}
+          >
+                  Products
+                </Typography>
+              </Link >
+              <Link to = "/Transactions" style={{ textDecoration: 'none' }}>
+                <Typography
+            variant="h6"
+            noWrap
+            component="a"
+            href="/"
+            sx={{
+              mr: 2,
+              display: { xs: 'none', md: 'flex' },
+              fontFamily: 'monospace',
+              fontWeight: 700,
+              letterSpacing: '.3rem',
+              color: 'white',
+              textDecoration: 'none',
+              paddingLeft: "2rem"
+            }}
+          >
+                Transactions
+                </Typography>
+              </Link>
+          </Box>
+            <Nav className="justify-content-end pt-3" style = {{ paddingBottom: "1rem"}}>
                   <Nav.Item>
                       <Wallet
                           address={address}
@@ -98,12 +172,17 @@ return (
                       />
                   </Nav.Item>
               </Nav>
+          </Toolbar>
+                </AppBar>   
               <main>
-                  <Products address={address} fetchBalance={fetchBalance} fetchPoints={fetchPoints} user_points={points_received}/>
+                  <Routes>
+                  <Route path = '/' element = {<Products address={address} fetchBalance={fetchBalance} fetchPoints={fetchPoints} user_points={points_received}/>}/>
+                  <Route path = '/Transactions' element = {<Transactions/>}/>
+                  </Routes>
               </main>
           </Container>
       ) : (
-          <Cover name={"Street Food"} coverImg={coverImg} connect={connectWallet}/>
+          <Cover name={"Market Place"} coverImg={coverImg} connect={connectWallet}/>
       )}
   </>
 );

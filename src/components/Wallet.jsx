@@ -11,7 +11,7 @@ const Wallet = ({address, name, amount, points_given , points_received , symbol,
     }
     return (
         <>
-            <Dropdown>
+            <Dropdown style = {{display: "flex", flexDirection: "row", gap: "1rem", paddingRight: "1rem"}}>
                 <Dropdown.Toggle variant="light" align="end" id="dropdown-basic"
                                  className="d-flex align-items-center border rounded-pill py-1">
                     {amount ? (
