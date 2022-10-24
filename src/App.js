@@ -5,7 +5,7 @@ import Wallet from "./components/Wallet";
 import {Container, Nav} from "react-bootstrap";
 import Products from "./components/marketplace/Products";
 import {Notification} from "./components/utils/Notifications";
-import {indexerClient, myAlgoConnect} from "./utils/constants";
+import {indexerClient, myAlgoConnect , minRound} from "./utils/constants";
 import coverImg from "./assets/img/shoppingCart.png"
 import algosdk from "algosdk";
 import AppBar from '@mui/material/AppBar';
@@ -47,8 +47,9 @@ const App = function AppWrapper() {
     let note = new TextEncoder().encode("points-exchanged:uv3");
     let encodedNote = Buffer.from(note).toString("base64");
     let transactionInfo = await indexerClient.searchForTransactions()
-        .address(accountAddress)
         .notePrefix(encodedNote)
+        .txType("appl")
+        .minRound(minRound)
         .do();
         console.log(transactionInfo);
     let points_given = 0;
