@@ -1,46 +1,59 @@
 import React from 'react'
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
+import { Card, CardContent, Typography } from '@mui/material';
 
 function TransactionsPage(props) {
   const transactions_given = props.transactions_given
   const transactions_received = props.transactions_received
   return (
     <div>
-     <h3>
+     <Typography  variant="h3" sx = {{
+      textAlign : "center",
+      marginBottom : "3rem",
+
+     }}>
         Transactions
-    </h3>
-    <div className="transactions" style = {{ display: "flex"}}>
+     </Typography>
+    <div className="transactions" style = {{ display: "flex", justifyContent: "space-around"}}>
         <div className="transactions_receieved">
-          <h4> Transactions Received</h4> 
+          <Typography variant="h5" sx = {{ marginBottom : "2rem"}}> Transactions in which points received</Typography> 
           {transactions_received.map((transaction, index) => {
             console.log(transaction)
             return(
-              <div>
+              <Card>
+                <CardContent>
                 <p>
-                  id : {transaction.id}
+                  Id : {transaction.id}
                 </p>
                 <p>
-                  sender : {Buffer.from(transaction["application-transaction"]["application-args"][2], "base64").toString()}
+                  Receiver: { Buffer.from(transaction["application-transaction"]["application-args"][3], "base64").toString()}
                 </p>
-                  receiver: { Buffer.from(transaction["application-transaction"]["application-args"][3], "base64").toString()}
-              </div>)
+                <p>
+                  Points Amount : {Buffer.from(transaction["application-transaction"]["application-args"][4], "base64").toString()}
+                </p>
+                </CardContent>
+              </Card>)
           })}
         </div>
         <div className="transactions_given">
-          <h4> Transactions Given</h4> 
+          <Typography variant="h5" sx = {{ marginBottom : "2rem"}}> Transactions in which points given</Typography> 
           {transactions_given.map((transaction, index) => {
             console.log(transaction)
             return(
-              <div>
+              <Card>
+                <CardContent>
                 <p>
-                  id : {transaction.id}
+                  Id : {transaction.id}
                 </p>
                 <p>
-                  sender : {Buffer.from(transaction["application-transaction"]["application-args"][2], "base64").toString()}
+                  Receiver: { Buffer.from(transaction["application-transaction"]["application-args"][3], "base64").toString()}
                 </p>
-                  receiver: { Buffer.from(transaction["application-transaction"]["application-args"][3], "base64").toString()}
-              </div>)
+                <p>
+                  Points Amount : {Buffer.from(transaction["application-transaction"]["application-args"][4], "base64").toString()}
+                </p>
+                </CardContent>
+              </Card>)
           })}
         </div>
     </div>
