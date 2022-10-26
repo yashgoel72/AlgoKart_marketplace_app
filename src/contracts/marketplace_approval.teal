@@ -59,11 +59,11 @@ global CreatorAddress
 return
 main_l8:
 txn NumAppArgs
-int 5
+int 6
 ==
 assert
 txn Note
-byte "tutorial-marketplace:uv3"
+byte "tutorial-marketplace:uv2"
 ==
 assert
 txna ApplicationArgs 3

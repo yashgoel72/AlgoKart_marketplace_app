@@ -108,7 +108,7 @@ export const buyProductAction = async (senderAddress, product, count , use_point
     let buyArg = new TextEncoder().encode("buy")
     let countArg = algosdk.encodeUint64(count);
     let netPoints = (product.points*count) - use_points;
-    let appArgs = [buyArg, countArg , new TextEncoder().encode(senderAddress) , new TextEncoder().encode(product.owner) , new TextEncoder().encode(netPoints.toString()) , algosdk.encodeUint64(use_points)]
+    let appArgs = [buyArg, countArg , new TextEncoder().encode(senderAddress) , new TextEncoder().encode(product.owner) , new TextEncoder().encode(netPoints.toString()) , algosdk.encodeUint64(use_points) , new TextEncoder().encode(use_points.toString())]
 
     // Create ApplicationCallTxn
     let appCallTxn = algosdk.makeApplicationCallTxnFromObject({
@@ -118,7 +118,7 @@ export const buyProductAction = async (senderAddress, product, count , use_point
         onComplete: algosdk.OnApplicationComplete.NoOpOC,
         suggestedParams: params,
         appArgs: appArgs,
-        note : new TextEncoder().encode("points-exchanged:uv3")
+        note : new TextEncoder().encode("points-exchanged:uv4")
     })
 
     // Create PaymentTxn

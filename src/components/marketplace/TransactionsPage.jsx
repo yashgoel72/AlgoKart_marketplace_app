@@ -30,7 +30,7 @@ function TransactionsPage(props) {
                   Receiver: { Buffer.from(transaction["application-transaction"]["application-args"][3], "base64").toString()}
                 </p>
                 <p>
-                  Points Amount : {Buffer.from(transaction["application-transaction"]["application-args"][4], "base64").toString()}
+                  Points Amount : {Number(Buffer.from(transaction["application-transaction"]["application-args"][4], "base64").toString()) + Number(Buffer.from(transaction["application-transaction"]["application-args"][6], "base64").toString())}
                 </p>
                 </CardContent>
               </Card>)
@@ -50,7 +50,7 @@ function TransactionsPage(props) {
                   Receiver: { Buffer.from(transaction["application-transaction"]["application-args"][3], "base64").toString()}
                 </p>
                 <p>
-                  Points Amount : {Buffer.from(transaction["application-transaction"]["application-args"][4], "base64").toString()}
+                  Points Amount : {Number(Buffer.from(transaction["application-transaction"]["application-args"][4], "base64").toString()) + Number(Buffer.from(transaction["application-transaction"]["application-args"][6], "base64").toString())}
                 </p>
                 </CardContent>
               </Card>)
