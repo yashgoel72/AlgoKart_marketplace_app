@@ -47,12 +47,12 @@ const Product = ({address, product, buyProduct, deleteProduct, user_points}) => 
                                     setCount(Number(e.target.value));
                                 }}
                             />
-                              <Form.Control
+                              <Form.Control 
                                 type="number"
                                 value={use_points}
                                 min="1"
-                                //step="1000"
                                 max = {Math.min(user_points ,price)}
+                                onKeyPress="if(this.value.length==3) return false;"
                                 onChange={(e) => {
                                     setUsePoints(Number(e.target.value));
                                 }}
@@ -63,7 +63,7 @@ const Product = ({address, product, buyProduct, deleteProduct, user_points}) => 
                             onClick={() => buyProduct(product, count , use_points)}
                             className="w-75 py-3"
                         >
-                            Buy for {(microAlgosToString((price * count) - use_points))} ALGO
+                            Buy for {(microAlgosToString((price * count)-use_points))} ALGO
                         </Button>
                         {product.owner === address &&
                             <Button

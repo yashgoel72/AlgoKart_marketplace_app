@@ -6,6 +6,8 @@ import { Card, CardContent, Typography } from '@mui/material';
 function TransactionsPage(props) {
   const transactions_given = props.transactions_given
   const transactions_received = props.transactions_received
+  //const address = props.address
+
   return (
     <div>
      <Typography  variant="h3" sx = {{

@@ -20,7 +20,7 @@ export const truncateAddress = (address) => {
 export const microAlgosToString = (num) => {
     if (!num) return
     let bigNumber = new BigNumber(num)
-    return bigNumber.shiftedBy(-ALGORAND_DECIMALS).toFixed(3);
+    return bigNumber.shiftedBy(-ALGORAND_DECIMALS).toFixed(6);
 }
 
 // Convert an amount entered as algos (e.g. 10.5) to microAlgos (e.g. 10500)
