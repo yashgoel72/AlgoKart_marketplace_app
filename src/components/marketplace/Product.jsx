@@ -44,7 +44,7 @@ const Product = ({address, product, buyProduct, deleteProduct, user_points}) => 
                                 min="1"
                                 max="10"
                                 onChange={(e) => {
-                                    setCount(Number(e.target.value));
+                                    setCount(Math.min(10,Number(e.target.value)));
                                 }}
                             />
                               <Form.Control
@@ -54,7 +54,7 @@ const Product = ({address, product, buyProduct, deleteProduct, user_points}) => 
                                 //step="1000"
                                 max = {Math.min(user_points ,price)}
                                 onChange={(e) => {
-                                    setUsePoints(Number(e.target.value));
+                                    setUsePoints( Math.min(Math.min(user_points ,price),Number(e.target.value)));
                                 }}
                             />
                         </FloatingLabel>
