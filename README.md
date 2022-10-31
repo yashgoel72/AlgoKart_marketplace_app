@@ -1,70 +1,46 @@
-# Getting Started with Create React App
+# AlgoKart : Decentralised E-Commerce Platform with Customer Loyalty benefits
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The Blockchain enabled Decentralised E-Commerce Platform AlgoKart helps achieve Operational efficiency, Transperancy, Cost-effectiveness, and Loyalty Program benefits for the Sellers and customers.
+Through its Customer Loyalty Program, buyers earn Loyalty Points by buying Products from the Platform and can reedem these points for buying other Products, or Gift Cards or Merchendise they like.
+Being a Platform Centric Marketplace, it allows users to act as buyers and sellers at the same time and earn and reward Loyalty Points according to the action , they being seller or buyer.
 
-## Available Scripts
+## Starting up this project
 
-In the project directory, you can run:
+- Clone this repository using:
 
-### `npm start`
+  > git clone https://github.com/yashgoel72/Algorand_marketplace_app
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- In the project directory, run:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+  > npm start
+  >
+  > > Runs the app in the development mode.\
+  > > Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+  
+ ## Usage and Incentivization
 
-### `npm test`
+1. Right away, you can see the 'connect wallet' button which requires a [myAlgo](https://wallet.myalgo.com/) Wallet Account and you connect the Wallet
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. After connecting, at the top right Corner you can see your Wallet Balance, Total Points Available as buyer, and total Points given as seller.
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+3. There are 3 Major Operations that you canm perform.
+  i) Add Product using "Add Product Button"
+  ii) Buy Product using "Buy" button after specifying the amount of Loyalty Points one wants to reedem for buying Product
+  iii) Delete any Listing
+ 
+### 4. Adding a Product
+  You must specify the following data for the product you want to selling and the complete and sign the transaction
+  
+  >> Photo
+  
+### 5. Buying a Product
+  Select product you want to buy and then specify the "count" and "Points" you want to reedem to buy that product and then sign the transaction
+  
+  >> Photo
+  
+### 6. Delete the Product
+  One can delete his/her product listing by clicking the delete icon on their listing and completing the transaction
+  >> Photo
+  
+ 7. To Enable complete transperancy, one can get all their Buy and Sell Transactions by navigating to the "Transaction" in the Nav Bar
+ 
