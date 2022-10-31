@@ -46,8 +46,14 @@ const Product = ({address, product, buyProduct, deleteProduct, user_points}) => 
                                 onChange={(e) => {
                                     setCount(Math.min(10,Number(e.target.value)));
                                 }}
-                            />
-                              <Form.Control 
+                            />                             
+                        </FloatingLabel>
+                        <FloatingLabel
+                            controlId="inputCount"
+                            label="Use AlgoToken"
+                            className="w-50"
+                        >
+                        <Form.Control 
                                 type="number"
                                 value={use_points}
                                 min="1"

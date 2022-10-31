@@ -29,7 +29,7 @@ function TransactionsPage(props) {
                   <span style = {{fontWeight: "bold"}}>Id</span> : {transaction.id}
                 </p>
                 <p>
-                  <span style = {{fontWeight: "bold"}}>Receiver</span> : { Buffer.from(transaction["application-transaction"]["application-args"][3], "base64").toString()}
+                  <span style = {{fontWeight: "bold"}}>Sender</span> : { Buffer.from(transaction["application-transaction"]["application-args"][3], "base64").toString()}
                 </p>
                 <p>
                   <span style = {{fontWeight: "bold"}}>Points Amount</span> : {Number(Buffer.from(transaction["application-transaction"]["application-args"][4], "base64").toString()) + Number(Buffer.from(transaction["application-transaction"]["application-args"][6], "base64").toString())}
@@ -43,16 +43,16 @@ function TransactionsPage(props) {
           {transactions_given.map((transaction, index) => {
             console.log(transaction)
             return(
-              <Card>
+              <Card  sx = {{ margin : "2rem"}}>
                 <CardContent>
                 <p>
-                  Id : {transaction.id}
+                  <span style = {{fontWeight: "bold"}}>Id</span> : {transaction.id}
+                </p>
+             <p>
+                  <span style = {{fontWeight: "bold"}}>Receiver</span> : { Buffer.from(transaction["application-transaction"]["application-args"][2], "base64").toString()}
                 </p>
                 <p>
-                  Receiver: { Buffer.from(transaction["application-transaction"]["application-args"][3], "base64").toString()}
-                </p>
-                <p>
-                  Points Amount : {Number(Buffer.from(transaction["application-transaction"]["application-args"][4], "base64").toString()) + Number(Buffer.from(transaction["application-transaction"]["application-args"][6], "base64").toString())}
+                  <span style = {{fontWeight: "bold"}}>Points Amount</span> : {Number(Buffer.from(transaction["application-transaction"]["application-args"][4], "base64").toString()) + Number(Buffer.from(transaction["application-transaction"]["application-args"][6], "base64").toString())}
                 </p>
                 </CardContent>
               </Card>)

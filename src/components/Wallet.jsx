@@ -4,8 +4,11 @@ import {microAlgosToString, truncateAddress} from '../utils/conversions';
 import Identicon from './utils/Identicon'
 import PropTypes from "prop-types";
 import {Badge} from "react-bootstrap";
+import { Typography } from '@mui/material';
+import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
 
-const Wallet = ({address, name, amount, points_given , points_received , symbol, disconnect}) => {
+
+const Wallet = ({address, name, amount, points_given , points_received , symbol, disconnect, algoImg}) => {
     if (!address) {
         return null;
     }
@@ -16,24 +19,22 @@ const Wallet = ({address, name, amount, points_given , points_received , symbol,
                                  className="d-flex align-items-center border rounded-pill py-1">
                     {amount ? (
                         <>
-                            {microAlgosToString(amount)}
-                            <span className="ms-1"> {symbol}</span>
+                            {microAlgosToString(amount)} <img src={algoImg} alt="" style = {{
+                                width: "13px", marginRight: "5px", marginLeft: "2px"
+                            }}/>
                         </>
                     ) : (
                         <Spinner animation="border" size="sm" className="opacity-25"/>
+                         
                     )}
-
                     <Identicon address={address} size={28} className="ms-2 me-1"/>
                 </Dropdown.Toggle>
-                {/* <Badge bg="secondary" className="ms-auto">
-                            {points} Total Wallet Points
-                        </Badge> */}
-                <Badge bg="secondary" className="ms-auto">
-                    {points_received} Wallet Points Received
-                </Badge>
-                <Badge bg="secondary" className="ms-auto">
-                    {points_given} Wallet Points Given
-                </Badge>
+                <Typography>
+                    <MonetizationOnIcon/> {points_received} AlgoToken Received
+                </Typography>
+                <Typography>
+                   <MonetizationOnIcon/>  {points_given} AlgoToken Given
+                </Typography>
                 {/* <div variant="light" align="end" id="dropdown-basic" className="d-flex align-items-center border rounded-pill py-1">
                 <>
                             {points}

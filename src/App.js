@@ -7,6 +7,7 @@ import Products from "./components/marketplace/Products";
 import {Notification} from "./components/utils/Notifications";
 import {indexerClient, myAlgoConnect , minRound} from "./utils/constants";
 import coverImg from "./assets/img/shoppingCart.png"
+import algoImg from "./assets/img/algorand-algo-icon.png"
 import algosdk from "algosdk";
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -70,6 +71,7 @@ const App = function AppWrapper() {
        if(accountAddress === points_given_address)
        {
          points_given += Number(Buffer.from(transaction["application-transaction"]["application-args"][4], "base64").toString());
+         console.log(Number(Buffer.from(transaction["application-transaction"]["application-args"][4], "base64").toString()))
          transactions_given.push(transaction);
        }
        //points += Number(Buffer.from(transaction["application-transaction"]["application-args"][4], "base64").toString());
@@ -181,6 +183,7 @@ return (
                           points_received={points_received}
                           disconnect={disconnect}
                           symbol={"ALGO"}
+                          algoImg = {algoImg}
                       />
                   </Nav.Item>
               </Nav>
@@ -194,7 +197,7 @@ return (
               </main>
           </Container>
       ) : (
-          <Cover name={"Market Place"} coverImg={coverImg} connect={connectWallet}/>
+          <Cover name={"AlgoKart"} coverImg={coverImg} connect={connectWallet}/>
       )}
   </>
 );
