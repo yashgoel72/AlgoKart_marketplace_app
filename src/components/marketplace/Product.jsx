@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import {Badge, Button, Card, Col, FloatingLabel, Form, Stack} from "react-bootstrap";
 import {microAlgosToString, truncateAddress} from "../../utils/conversions";
 import Identicon from "../utils/Identicon";
+import { Typography } from "@mui/material";
 
 const Product = ({address, product, buyProduct, deleteProduct, user_points}) => {
     const {name, image, description, price, sold, appId, owner , points} =
@@ -18,12 +19,12 @@ const Product = ({address, product, buyProduct, deleteProduct, user_points}) => 
                     <Stack direction="horizontal" gap={2}>
                         <span className="font-monospace text-secondary">{truncateAddress(owner)}</span>
                         <Identicon size={28} address={owner}/>
-                        <Badge bg="secondary" className="ms-auto">
+                        <Typography className="ms-auto">
                             {sold} Sold
-                        </Badge>
-                        <Badge bg="secondary" className="ms-auto">
+                        </Typography>
+                        <Typography  className="ms-auto">
                             {points} Points/item
-                        </Badge>
+                        </Typography>
                     </Stack>
                 </Card.Header>
                 <div className="ratio ratio-4x3">

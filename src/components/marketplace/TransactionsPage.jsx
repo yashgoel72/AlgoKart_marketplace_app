@@ -19,7 +19,7 @@ function TransactionsPage(props) {
      </Typography>
     <div className="transactions" style = {{ display: "flex", justifyContent: "space-around"}}>
         <div className="transactions_receieved">
-          <Typography variant="h5" sx = {{ marginBottom : "2rem"}}> Transactions in which points received</Typography> 
+          <Typography variant="h5" sx = {{ marginBottom : "2rem", paddingLeft: "3rem"}}> Sell Transactions </Typography> 
           {transactions_received.map((transaction, index) => {
             console.log(transaction)
             return(
@@ -39,7 +39,7 @@ function TransactionsPage(props) {
           })}
         </div>
         <div className="transactions_given">
-          <Typography variant="h5" sx = {{ marginBottom : "2rem"}}> Transactions in which points given</Typography> 
+          <Typography variant="h5" sx = {{ marginBottom : "2rem", paddingLeft: "3rem"}}> Buy Transactions </Typography> 
           {transactions_given.map((transaction, index) => {
             console.log(transaction)
             return(

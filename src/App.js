@@ -109,7 +109,7 @@ return (
   <>
       <Notification />
       {address ? (
-          <Container fluid="md" style = {{width : "100%",maxWidth : "100%" }}>
+          <Container fluid="md" style = {{width : "100%",maxWidth : "100%"}}>
                 <AppBar position="static" style = {{marginBottom: "5rem"}}>
                     <Toolbar disableGutters>
                     <Typography
