@@ -24,23 +24,27 @@ Being a Platform Centric Marketplace, it allows users to act as buyers and selle
 2. After connecting, at the top right Corner you can see your Wallet Balance, Total Points Available as buyer, and total Points given as seller.
 
 3. There are 3 Major Operations that you canm perform.
-  i) Add Product using "Add Product Button"
-  ii) Buy Product using "Buy" button after specifying the amount of Loyalty Points one wants to reedem for buying Product
-  iii) Delete any Listing
+  - Add Product using "Add Product Button"
+  - Buy Product using "Buy" button after specifying the amount of Loyalty Points one wants to reedem for buying Product
+  - Delete any Listing
  
-### 4. Adding a Product
-  You must specify the following data for the product you want to selling and the complete and sign the transaction
+ 4. Adding a Product
+  You must specify the following data for the product you want to selling and the complete and sign the transaction.
+
+  >> Photo
+  
+5. Buying a Product
+  Select product you want to buy and then specify the "count" as the quantity of product you want to buy and the number of "Points" that you want to reedem to buy that product. After that sign the transaction. We refer these "Points" as "Algokart Token" and the value chosen for Algokart Token is equal to 1 Microalgo.</br>
+  Any combination of Algokart Token and microalgos can be used to purchase the product as long as both is greater than zero. 
   
   >> Photo
   
-### 5. Buying a Product
-  Select product you want to buy and then specify the "count" and "Points" you want to reedem to buy that product and then sign the transaction
-  
+6. Delete the Product
+  One can delete his/her product listing by clicking the delete icon on their listing and completing the transaction.
   >> Photo
   
-### 6. Delete the Product
-  One can delete his/her product listing by clicking the delete icon on their listing and completing the transaction
-  >> Photo
-  
- 7. To Enable complete transperancy, one can get all their Buy and Sell Transactions by navigating to the "Transaction" in the Nav Bar
+7. View Transaction 
+To Enable complete transperancy, one can get all their Buy and Sell Transactions by navigating to the "Transaction" in the Nav Bar.
+
+
  
