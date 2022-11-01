@@ -6,7 +6,7 @@ import {Container, Nav} from "react-bootstrap";
 import Products from "./components/marketplace/Products";
 import {Notification} from "./components/utils/Notifications";
 import {indexerClient, myAlgoConnect , minRound} from "./utils/constants";
-import coverImg from "./assets/img/shoppingCart.png"
+import coverImg from "./assets/img/algoLogo.jpeg"
 import algoImg from "./assets/img/algorand-algo-icon.png"
 import algosdk from "algosdk";
 import AppBar from '@mui/material/AppBar';
