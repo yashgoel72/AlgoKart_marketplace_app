@@ -4,11 +4,11 @@ import PropTypes from 'prop-types';
 
 const Cover = ({name, coverImg, connect}) => {
     return (
-        <div className="d-flex justify-content-center flex-column text-center bg-black min-vh-100">
-            <div className="mt-auto text-light mb-5">
+        <div className="d-flex justify-content-center flex-column text-center bg-white min-vh-100">
+            <div className="mt-auto text-dark mb-5">
                 <div
                     className=" ratio ratio-1x1 mx-auto mb-2"
-                    style={{maxWidth: "320px"}}
+                    style={{maxWidth: "400px"}}
                 >
                     <img src={coverImg} alt=""/>
                 </div>
@@ -16,7 +16,7 @@ const Cover = ({name, coverImg, connect}) => {
                 <p>Please connect your wallet to continue.</p>
                 <Button
                     onClick={() => connect()}
-                    variant="outline-light"
+                    variant="dark"
                     className="rounded-pill px-3 mt-3"
                 >
                     Connect Wallet
