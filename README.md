@@ -49,4 +49,4 @@ To Enable complete transperancy, one can get all their Buy and Sell Transactions
 ## Working
 When a transaction is performed, an Application Transaction object is created. A spectial "note" identifier is added to the transaction object. Our platform awards Algokart Token on the basis of amount of transaction. In order to calculate the number of Algorand Tokens we use the note as the identifier in order to segregate out the transaction of interest.
 
-![alt text](https://github.com/yashgoel72/Algorand_marketplace_app/blob/main/Flow.svg)
+![alt text](https://github.com/yashgoel72/Algorand_marketplace_app/blob/main/Flow.png)
