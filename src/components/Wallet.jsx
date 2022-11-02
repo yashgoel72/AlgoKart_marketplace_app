@@ -30,10 +30,10 @@ const Wallet = ({address, name, amount, points_given , points_received , symbol,
                     <Identicon address={address} size={28} className="ms-2 me-1"/>
                 </Dropdown.Toggle>
                 <Typography>
-                    <MonetizationOnIcon/> {points_received} AlgoToken Received
+                    <MonetizationOnIcon/> {points_received} AKT Available
                 </Typography>
                 <Typography>
-                   <MonetizationOnIcon/>  {points_given} AlgoToken Given
+                   <MonetizationOnIcon/>  {points_given} AKT Distributed
                 </Typography>
                 {/* <div variant="light" align="end" id="dropdown-basic" className="d-flex align-items-center border rounded-pill py-1">
                 <>

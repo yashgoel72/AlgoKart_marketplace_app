@@ -23,7 +23,7 @@ const Product = ({address, product, buyProduct, deleteProduct, user_points}) => 
                             {sold} Sold
                         </Typography>
                         <Typography  className="ms-auto">
-                            {points} Points/item
+                            {points} AKT/item
                         </Typography>
                     </Stack>
                 </Card.Header>

@@ -46,7 +46,7 @@ const App = function AppWrapper() {
           });
   };
   const fetchPoints = async (accountAddress) => {
-    let note = new TextEncoder().encode("points-exchanged:uv4");
+    let note = new TextEncoder().encode("points-exchanged:uv10");
     let encodedNote = Buffer.from(note).toString("base64");
     let transactionInfo = await indexerClient.searchForTransactions()
         .notePrefix(encodedNote)

@@ -118,7 +118,7 @@ export const buyProductAction = async (senderAddress, product, count , use_point
         onComplete: algosdk.OnApplicationComplete.NoOpOC,
         suggestedParams: params,
         appArgs: appArgs,
-        note : new TextEncoder().encode("points-exchanged:uv4")
+        note : new TextEncoder().encode("points-exchanged:uv10")
     })
 
     // Create PaymentTxn

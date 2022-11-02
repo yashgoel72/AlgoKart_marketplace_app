@@ -15,7 +15,7 @@ class Product:
     def application_creation(self):
         return Seq([
             Assert(Txn.application_args.length() == Int(5)),
-            Assert(Txn.note() == Bytes("tutorial-marketplace:uv3")),
+            Assert(Txn.note() == Bytes("tutorial-marketplace:uv10")),
             Assert(Btoi(Txn.application_args[3]) > Int(0)),
             App.globalPut(self.Variables.name , Txn.application_args[0]),
             App.globalPut(self.Variables.image , Txn.application_args[1]),
