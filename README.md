@@ -12,7 +12,7 @@ https://youtu.be/bOmykCS-aY0
 
 - Clone this repository using:
 
-  > git clone https://github.com/yashgoel72/Algorand_marketplace_app
+  > git clone https://github.com/yashgoel72/AlgoKart_marketplace_app
 
 - In the project directory, run:
 
