@@ -5,6 +5,9 @@ The Blockchain enabled Decentralised E-Commerce Platform AlgoKart helps achieve 
 Through its Customer Loyalty Program, buyers earn Loyalty Points by buying Products from the Platform and can reedem these points for buying other Products, Gift Cards or Merchandise they like.
 Being a Platform-Centric Marketplace, it allow users to act as buyers and sellers at the same time and earn or reward Loyalty Points according to the action, selling or buying.
 
+## Presentation Link
+https://youtu.be/bOmykCS-aY0
+
 ## Starting up this project
 
 - Clone this repository using:
