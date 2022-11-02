@@ -34,7 +34,7 @@ Being a Platform-Centric Marketplace, it allow users to act as buyers and seller
  4. Adding a Product
   You must specify the following data for the product you want to selling and the complete and sign the transaction.
 
-![alt text](https://github.com/yashgoel72/Algorand_marketplace_app/blob/main/Add.png)
+![alt text](https://github.com/yashgoel72/Algorand_marketplace_app/blob/main/Add.jpeg)
   
 5. Buying a Product
   Select product you want to buy and then specify the "count" as the quantity of product you want to buy and the number of "Points" that you want to reedem to buy that product(you cannot redeem more than 10% of total product cost). After that, sign the transaction. We refer these "Points" as "Algokart Token" and the value chosen for Algokart Token is equal to 1 Microalgo.</br>
